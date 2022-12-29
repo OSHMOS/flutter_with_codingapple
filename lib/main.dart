@@ -14,95 +14,42 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            Text('금호동3가',
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20,
-                    color: Colors.black)),
-            Icon(
-              Icons.expand_more,
-              color: Colors.black,
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-            color: Colors.black,
+        title: Text('코딩애플 연락처 앱'),
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('홍길동'),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu),
-            color: Colors.black,
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('홍길동'),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications),
-            color: Colors.black,
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('홍길동'),
           ),
         ],
       ),
-      body: ShopItem(),
+      bottomNavigationBar: CustomBottomBar(),
     ));
   }
 }
 
-class ShopItem extends StatelessWidget {
-  const ShopItem({super.key});
+class CustomBottomBar extends StatelessWidget {
+  const CustomBottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      padding: EdgeInsets.all(10),
+    return SizedBox(
+      height: 70,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset(
-            'assets/flutter.png',
-            width: 150,
-          ),
-          Flexible(
-            flex: 1,
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '캐논 DSLR 100D(단렌즈, \n충전기 16기가SD 포함)',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    '성동구 행당동 · 끌올 10분 전',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w300,
-                      fontSize: 12,
-                    ),
-                  ),
-                  Text(
-                    '210,000원',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(Icons.favorite_border),
-                      Text('4'),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.phone)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.message)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.contact_page)),
         ],
       ),
     );

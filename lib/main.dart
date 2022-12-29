@@ -46,53 +46,65 @@ class MyApp extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        height: 150,
-        padding: EdgeInsets.all(10),
-        child: Row(
-          children: [
-            Image.asset(
-              'assets/flutter.png',
-              width: 150,
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('캐논 DSLR 100D(단렌즈, \n충전기 16기가SD 포함)',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
+      body: ShopItem(),
+    ));
+  }
+}
+
+class ShopItem extends StatelessWidget {
+  const ShopItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 150,
+      padding: EdgeInsets.all(10),
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/flutter.png',
+            width: 150,
+          ),
+          Flexible(
+            flex: 1,
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '캐논 DSLR 100D(단렌즈, \n충전기 16기가SD 포함)',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
-                    Text('성동구 행당동 · 끌올 10분 전',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 12,
-                      ),
+                  ),
+                  Text(
+                    '성동구 행당동 · 끌올 10분 전',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12,
                     ),
-                    Text('210,000원',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
+                  ),
+                  Text(
+                    '210,000원',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(Icons.favorite_border),
-                        Text('4'),
-                      ],
-                    )
-                  ],
-                ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(Icons.favorite_border),
+                      Text('4'),
+                    ],
+                  )
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    ));
+    );
   }
 }

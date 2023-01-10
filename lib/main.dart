@@ -12,7 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var a = 3;
   var name = ['엄마', '아빠', '형'];
+
+  setCnt() {
+    setState(() {
+      a++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,7 @@ class _MyAppState extends State<MyApp> {
           showDialog(
             context: context,
             builder: (context) {
-              return DialogUI();
+              return DialogUI(cnt: a, setCnt: setCnt);
             },
           );
         },
@@ -43,7 +50,9 @@ class _MyAppState extends State<MyApp> {
 }
 
 class DialogUI extends StatelessWidget {
-  const DialogUI({super.key});
+  const DialogUI({super.key, this.cnt, this.setCnt});
+  final cnt;
+  final setCnt;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +67,10 @@ class DialogUI extends StatelessWidget {
           child: Text('cancel'),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            setCnt();
+            print(cnt);
+          },
           child: Text('ok'),
         ),
       ],

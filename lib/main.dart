@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -13,40 +13,46 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var name = ['엄마', '아빠', '형'];
-  var like = [0, 0, 0];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          title: Text('코딩애플 연락처 앱'),
-        ),
-        body: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, i) {
-            return ListTile(
-              leading: Text(like[i].toString()),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(name[i]),
-                  ElevatedButton(
-                    child: Text('좋아요'),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Contact'),
+                content: TextField(),
+                actions: [
+                  TextButton(
                     onPressed: () {
-                      setState(() {
-                        like[i]++;
-                      });
+                      Navigator.of(context).pop();
                     },
+                    child: Text('cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('ok'),
                   ),
                 ],
-              ),
-            );
-          },
-        ),
-        bottomNavigationBar: CustomBottomBar(),
+              );
+            },
+          );
+        },
       ),
+      appBar: AppBar(),
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, i) {
+          return ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text(name[i]),
+          );
+        },
+      ),
+      bottomNavigationBar: CustomBottomBar(),
     );
   }
 }
